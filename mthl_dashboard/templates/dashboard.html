@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+
+
+</head>
+<body>
+    <header>
+        <h3>YO YO DASHBOARD</h3>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('upload_data') }}">Upload Data</a>
+        </nav>
+    </header>
+
+    <div id="metrics-card-holder">
+        <div class = card-div>
+            <div id="revenue-card">
+                {{ revenue_card |safe }}
+            </div>
+        </div>
+
+        <div class = card-div>
+            <div id="traffic-card">
+                {{ traffic_card |safe }}
+            </div>
+        </div>
+
+        <div class = card-div>
+            <div id="average-revenue-card">
+                {{ average_revenue_card |safe }}
+            </div>
+        </div>
+
+        <div class = card-div>
+            <div id="average-traffic-card">
+                {{ average_traffic_card |safe }}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="traffic-analysis">
+        <h3>Understanding Traffic</h3>
+
+        <div id = "traffic-pie-line_div">
+            <div id = traffic-pie-chart-div>
+                <div id="traffic-pie-chart">
+                    {{ traffic_pie_chart_html|safe }}
+                </div>
+            </div>
+
+            <div class="traffic-line-and-comment">
+                <div id = traffic-line-chart-div>
+                    <div id="traffic-line-chart">
+                        {{ process_and_plot_traffic_html |safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id = run-through-chart-div>
+            <div id="run-through-chart">
+                {{ plot_daily_run_through_traffic_html |safe }}
+            </div>
+        </div>
+    </div>
+
+    <div class="revenue-analysis">
+
+        <div id="revenue-pie-line-div">
+
+            <div id = revenue-line-chart-div>
+                <div id="revenue-line-chart">
+                    {{ process_and_plot_revenue_html |safe }}
+                </div>
+            </div>
+
+            <div id = revenue-pie-chart-div>
+                <div id="revenue-pie-chart">
+                    {{ revenue_pie_chart_html|safe }}
+                </div>
+            </div>
+
+        </div>
+
+        <div id = payment-donut-chart-div>
+            <div id="payment-donut-chart">
+                {{ revenue_distribution_donut_html |safe }}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="simulation-container">
+        <h2>Traffic and Revenue Prediction</h2>
+        <div class="form-section">
+            <label for="vehicle_type">Select Vehicle Type:</label>
+            <select id="vehicle_type" name="vehicle_type">
+                <option value="CAR">CAR</option>
+                <option value="BUS\\2-AXLETRUCK">BUS/2-AXLETRUCK</option>
+                <option value="LCV\\MINIBUS">LCV/MINIBUS</option>
+                <option value="MAV(3AXLE)">MAV(3AXLE)</option>
+                <option value="MAV(4-6AXLE)">MAV(4-6AXLE)</option>
+                <option value="OVERSIZE">OVERSIZE</option>
+            </select>
+
+            <label for="official_toll">Set Official Toll:</label>
+            <input type="range" id="official_toll" name="official_toll" min="100" max="500" value="250" oninput="updateTollValue(this.value)">
+            <span id="toll_value">₹ 250</span>
+
+            <button id="predict_button">Predict</button>
+        </div>
+
+        <div class="card-container">
+            <div class="predi-card" id="traffic_card">
+                <h3>Predicted Daily Traffic</h3>
+                <p id="traffic_value">--</p>
+            </div>
+            <div class="predi-card" id="revenue_card">
+                <h3>Predicted Daily Revenue</h3>
+                <p id="revenue_value">--</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created by Soham Chandekar</p>
+    </footer>
+
+    <script>
+        function updateTollValue(value) {
+            document.getElementById('toll_value').textContent = value;
+        }
+
+        document.getElementById('predict_button').addEventListener('click', function () {
+            const vehicleType = document.getElementById('vehicle_type').value;
+            const officialToll = document.getElementById('official_toll').value;
+
+            fetch('/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `vehicle_type=${vehicleType}&official_toll=${officialToll}`
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('traffic_value').textContent = data.predicted_traffic;
+                document.getElementById('revenue_value').textContent = data.predicted_revenue;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+
+</body>
+</html>
