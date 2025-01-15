@@ -12,7 +12,7 @@ from functions import (generate_date_wise_dict, aggregate_traffic,process_and_pl
 
 from functions import lifetime_revenue,lifetime_traffic,daily_average_traffic,daily_average_revenue
 
-from model import prepare_data_for_model, simulate_scenarios,train_robust_model,prepare_data,add_custom_features
+# from model import prepare_data_for_model, simulate_scenarios,train_robust_model,prepare_data,add_custom_features
 
 # Initialize the Flask app
 app = Flask(__name__)
@@ -62,13 +62,13 @@ def dashboard():
     average_revenue_card = daily_average_revenue(traffic_dictionary)
     average_traffic_card = daily_average_traffic(traffic_dictionary)
 
-    prediction_base_data = prepare_data_for_model(traffic_dictionary)
-    prediction_base_data = add_custom_features(prediction_base_data)
-    print(prediction_base_data.head(5))
+    # prediction_base_data = prepare_data_for_model(traffic_dictionary)
+    # prediction_base_data = add_custom_features(prediction_base_data)
+    # print(prediction_base_data.head(5))
 
-    X, y = prepare_data(prediction_base_data)
-    # Train the model
-    model = train_robust_model(X, y)
+    # X, y = prepare_data(prediction_base_data)
+    # # Train the model
+    # model = train_robust_model(X, y)
 
 
     # Pass the global_data to the dashboard for rendering
@@ -132,30 +132,30 @@ def upload_data():
     return render_template('upload_data.html')
 
 
-@app.route('/predict', methods=['POST'])
-def predict():
-    global model  # Ensure model is globally accessible
-
-    if model is None:
-        return jsonify({'error': 'Model is not trained yet. Please train the model on the dashboard.'}), 500
-
-    # Extract inputs from the request
-    vehicle_type = request.form.get('vehicle_type')
-    official_toll = float(request.form.get('official_toll'))
-
-    # Use simulate_scenarios function to get predictions
-    predicted_traffic, predicted_revenue, recalculated_revenue = simulate_scenarios(
-        model=model, vehicle_type=vehicle_type, official_toll=official_toll
-    )
-
-    # Format the revenue using the Indian numbering system with rupee symbol
-    predicted_revenue = format_currency(predicted_revenue, 'INR', locale='en_IN')
-
-    # Return predictions as JSON
-    return jsonify({
-        'predicted_traffic': round(predicted_traffic, 0),
-        'predicted_revenue': predicted_revenue,  # Include the formatted revenue
-    })
+# @app.route('/predict', methods=['POST'])
+# def predict():
+#     global model  # Ensure model is globally accessible
+#
+#     if model is None:
+#         return jsonify({'error': 'Model is not trained yet. Please train the model on the dashboard.'}), 500
+#
+#     # Extract inputs from the request
+#     vehicle_type = request.form.get('vehicle_type')
+#     official_toll = float(request.form.get('official_toll'))
+#
+#     # Use simulate_scenarios function to get predictions
+#     predicted_traffic, predicted_revenue, recalculated_revenue = simulate_scenarios(
+#         model=model, vehicle_type=vehicle_type, official_toll=official_toll
+#     )
+#
+#     # Format the revenue using the Indian numbering system with rupee symbol
+#     predicted_revenue = format_currency(predicted_revenue, 'INR', locale='en_IN')
+#
+#     # Return predictions as JSON
+#     return jsonify({
+#         'predicted_traffic': round(predicted_traffic, 0),
+#         'predicted_revenue': predicted_revenue,  # Include the formatted revenue
+#     })
 
 
 # Run the application
