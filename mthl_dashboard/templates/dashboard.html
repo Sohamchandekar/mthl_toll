@@ -95,66 +95,66 @@
 
     </div>
 
-    <div class="simulation-container">
-        <h2>Traffic and Revenue Prediction</h2>
-        <div class="form-section">
-            <label for="vehicle_type">Select Vehicle Type:</label>
-            <select id="vehicle_type" name="vehicle_type">
-                <option value="CAR">CAR</option>
-                <option value="BUS\\2-AXLETRUCK">BUS/2-AXLETRUCK</option>
-                <option value="LCV\\MINIBUS">LCV/MINIBUS</option>
-                <option value="MAV(3AXLE)">MAV(3AXLE)</option>
-                <option value="MAV(4-6AXLE)">MAV(4-6AXLE)</option>
-                <option value="OVERSIZE">OVERSIZE</option>
-            </select>
+<!--    <div class="simulation-container">-->
+<!--        <h2>Traffic and Revenue Prediction</h2>-->
+<!--        <div class="form-section">-->
+<!--            <label for="vehicle_type">Select Vehicle Type:</label>-->
+<!--            <select id="vehicle_type" name="vehicle_type">-->
+<!--                <option value="CAR">CAR</option>-->
+<!--                <option value="BUS\\2-AXLETRUCK">BUS/2-AXLETRUCK</option>-->
+<!--                <option value="LCV\\MINIBUS">LCV/MINIBUS</option>-->
+<!--                <option value="MAV(3AXLE)">MAV(3AXLE)</option>-->
+<!--                <option value="MAV(4-6AXLE)">MAV(4-6AXLE)</option>-->
+<!--                <option value="OVERSIZE">OVERSIZE</option>-->
+<!--            </select>-->
 
-            <label for="official_toll">Set Official Toll:</label>
-            <input type="range" id="official_toll" name="official_toll" min="100" max="500" value="250" oninput="updateTollValue(this.value)">
-            <span id="toll_value">₹ 250</span>
+<!--            <label for="official_toll">Set Official Toll:</label>-->
+<!--            <input type="range" id="official_toll" name="official_toll" min="100" max="500" value="250" oninput="updateTollValue(this.value)">-->
+<!--            <span id="toll_value">₹ 250</span>-->
 
-            <button id="predict_button">Predict</button>
-        </div>
+<!--            <button id="predict_button">Predict</button>-->
+<!--        </div>-->
 
-        <div class="card-container">
-            <div class="predi-card" id="traffic_card">
-                <h3>Predicted Daily Traffic</h3>
-                <p id="traffic_value">--</p>
-            </div>
-            <div class="predi-card" id="revenue_card">
-                <h3>Predicted Daily Revenue</h3>
-                <p id="revenue_value">--</p>
-            </div>
-        </div>
-    </div>
+<!--        <div class="card-container">-->
+<!--            <div class="predi-card" id="traffic_card">-->
+<!--                <h3>Predicted Daily Traffic</h3>-->
+<!--                <p id="traffic_value">&#45;&#45;</p>-->
+<!--            </div>-->
+<!--            <div class="predi-card" id="revenue_card">-->
+<!--                <h3>Predicted Daily Revenue</h3>-->
+<!--                <p id="revenue_value">&#45;&#45;</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <footer>
-        <p>Created by Soham Chandekar</p>
-    </footer>
+<!--    <footer>-->
+<!--        <p>Created by Soham Chandekar</p>-->
+<!--    </footer>-->
 
     <script>
         function updateTollValue(value) {
             document.getElementById('toll_value').textContent = value;
         }
 
-        document.getElementById('predict_button').addEventListener('click', function () {
-            const vehicleType = document.getElementById('vehicle_type').value;
-            const officialToll = document.getElementById('official_toll').value;
+<!--        document.getElementById('predict_button').addEventListener('click', function () {-->
+<!--            const vehicleType = document.getElementById('vehicle_type').value;-->
+<!--            const officialToll = document.getElementById('official_toll').value;-->
 
-            fetch('/predict', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `vehicle_type=${vehicleType}&official_toll=${officialToll}`
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                document.getElementById('traffic_value').textContent = data.predicted_traffic;
-                document.getElementById('revenue_value').textContent = data.predicted_revenue;
-            })
+<!--            fetch('/predict', {-->
+<!--                method: 'POST',-->
+<!--                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },-->
+<!--                body: `vehicle_type=${vehicleType}&official_toll=${officialToll}`-->
+<!--            })-->
+<!--            .then(response => {-->
+<!--                if (!response.ok) {-->
+<!--                    throw new Error('Network response was not ok');-->
+<!--                }-->
+<!--                return response.json();-->
+<!--            })-->
+<!--            .then(data => {-->
+<!--                document.getElementById('traffic_value').textContent = data.predicted_traffic;-->
+<!--                document.getElementById('revenue_value').textContent = data.predicted_revenue;-->
+<!--            })-->
             .catch(error => console.error('Error:', error));
         });
     </script>
