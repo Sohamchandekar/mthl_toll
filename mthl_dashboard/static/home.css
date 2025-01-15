@@ -8,15 +8,14 @@ body, html {
     overflow: hidden; /* Prevent scrollbars if the video overflows */
 }
 
-/* Background video styling */
-.background-video {
+.background-image {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the video fills the screen without distortion */
-    z-index: -1; /* Keeps the video behind other content */
+    object-fit: cover;
+    z-index: -1;
 }
 
 /* Header styling */
