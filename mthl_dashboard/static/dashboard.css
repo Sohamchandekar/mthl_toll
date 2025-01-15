@@ -1,0 +1,340 @@
+/* General reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #8e9eab;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* Header styling */
+header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(245, 245, 245, 0.5); /* Light off-white background with slight transparency */
+    color: black;
+    text-shadow: none; /* Removed text shadow for a cleaner look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow for better separation from background */
+}
+
+
+/* Navigation styling */
+nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black; /* Default color for links */
+    font-size: 1.2rem;
+    margin-left: 20px;
+    padding: 5px 10px;
+    border: none; /* Removed border */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for navigation buttons */
+nav a:hover {
+    background-color: black; /* Black background on hover */
+    color: white; /* White text on hover */
+    border-radius: 5px; /* Smooth rounded corners on hover */
+}
+
+/* Footer styling */
+footer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+#payment-donut-chart-div {
+    background-color: rgba(255,255,255,0.5); /* White background */
+    box-shadow: rgba(4, 59, 92, 0.35) 0px 5px 15px;
+    border-radius: 15px; /* Rounded corners */
+    padding: 5px; /* Minimal padding for spacing */
+    margin: 10px auto; /* Center the div horizontally with small vertical spacing */
+    width: 410px; /* Slightly larger to accommodate the figure width */
+    height:370px;
+    overflow: hidden; /* Prevent overflow issues */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+#run-through-chart-div {
+    background-color: rgba(255,255,255,0.8); /* White background */
+    box-shadow: rgba(4, 59, 92, 0.35) 0px 5px 15px;
+    border-radius: 15px; /* Rounded corners */
+    padding: 5px; /* Minimal padding for spacing */
+    margin: 10px auto; /* Center the div horizontally with small vertical spacing */
+    width: 1210px; /* Slightly larger to accommodate the figure width */
+    overflow: hidden; /* Prevent overflow issues */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+
+
+/*************************** Style for the card holder *************************/
+#metrics-card-holder {
+    display: flex; /* Use Flexbox for horizontal alignment */
+    justify-content: space-between; /* Even spacing between cards */
+    align-items: center; /* Align cards vertically centered */
+    padding: 10px; /* Optional padding around the holder */
+    width: 95%; /* Take up full width */
+    gap: 10px; /* Add consistent spacing between cards */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Individual card styling remains the same */
+.card-div {
+    background: linear-gradient(to bottom right, #ffffff, #f0f4f8); /* Gradient background for a subtle 3D effect */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px, rgba(0, 0, 0, 0.06) 0px 1px 3px; /* Softer shadow for depth */
+    border-radius: 15px; /* Rounded corners */
+    width: 230px; /* Fixed width for cards */
+    height: 120px; /* Fixed height for cards */
+    overflow: hidden; /* Prevent overflow issues */
+    display: flex; /* Use flexbox for centering card content */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    text-align: center; /* Center-align text inside */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.card-div:hover {
+    transform: translateY(-5px); /* Lift on hover */
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px, rgba(0, 0, 0, 0.1) 0px 4px 8px; /* Enhanced shadow on hover */
+}
+
+/* Font styling inside the cards */
+.card-div #revenue-card,
+.card-div #traffic-card,
+.card-div #average-revenue-card,
+.card-div #average-traffic-card {
+    font-family: 'Arial', sans-serif; /* Modern font */
+    font-size: 18px; /* Readable font size */
+    color: #333; /* Neutral text color */
+}
+
+
+
+/*************************** Parent container for the pie chart and line chart *************************/
+#traffic-pie-line_div {
+    display: flex; /* Use Flexbox for horizontal layout */
+    justify-content: space-between; /* Even spacing between child divs */
+    align-items: center; /* Align child divs vertically centered */
+    gap: 20px; /* Space between the charts */
+    padding: 10px; /* Optional padding for the container */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    width: 100%; /* Take up the full width of the parent container */
+}
+
+#traffic-pie-chart-div {
+    background-color: rgba(255,255,255,0.5); /* White background */
+    box-shadow: rgba(4, 59, 92, 0.35) 0px 5px 15px;
+    border-radius: 15px; /* Rounded corners */
+    padding: 5px; /* Minimal padding for spacing */
+    margin: 10px auto; /* Center the div horizontally with small vertical spacing */
+    height:450px;
+    width: 500px; /* Slightly larger to accommodate the figure width */
+    overflow: hidden; /* Prevent overflow issues */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+#traffic-line-chart-div {
+    background-color: rgba(255,255,255,0.8); /* White background */
+    box-shadow: rgba(4, 59, 92, 0.35) 0px 5px 15px;
+    border-radius: 15px; /* Rounded corners */
+    padding: 5px; /* Minimal padding for spacing */
+    margin: 10px auto; /* Center the div horizontally with small vertical spacing */
+    width: 950px; /* Slightly larger to accommodate the figure width */
+    overflow: hidden; /* Prevent overflow issues */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+/*************************** Parent container for the pie chart and line chart *************************/
+
+#revenue-pie-line-div {
+    display: flex; /* Use Flexbox for horizontal layout */
+    justify-content: space-between; /* Even spacing between child divs */
+    align-items: center; /* Align child divs vertically centered */
+    gap: 20px; /* Space between the charts */
+    padding: 10px; /* Optional padding for the container */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    width: 100%; /* Take up the full width of the parent container */
+}
+
+#revenue-pie-chart-div {
+    background-color: rgba(255,255,255,0.5); /* White background */
+    box-shadow: rgba(4, 59, 92, 0.35) 0px 5px 15px;
+    border-radius: 15px; /* Rounded corners */
+    padding: 5px; /* Minimal padding for spacing */
+    margin: 10px auto; /* Center the div horizontally with small vertical spacing */
+    height:450px;
+    width: 500px; /* Slightly larger to accommodate the figure width */
+    overflow: hidden; /* Prevent overflow issues */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+#revenue-line-chart-div {
+    background-color: rgba(255,255,255,0.8); /* White background */
+    box-shadow: rgba(4, 59, 92, 0.35) 0px 5px 15px;
+    border-radius: 15px; /* Rounded corners */
+    padding: 5px; /* Minimal padding for spacing */
+    margin: 10px auto; /* Center the div horizontally with small vertical spacing */
+    width: 950px; /* Slightly larger to accommodate the figure width */
+    overflow: hidden; /* Prevent overflow issues */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+
+
+.simulation-container {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+    padding: 20px;
+    width: 500px;
+    height: 430px;
+    border-radius: 15px;
+    box-shadow: rgba(4, 59, 92, 0.35) 0px 5px 15px;
+    font-family: 'Arial', sans-serif;
+    backdrop-filter: blur(10px); /* Subtle blur effect */
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+#vehicle_type {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #eef1f6;
+    font-size: 14px;
+}
+
+.card-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.predi-card {
+    background: linear-gradient(135deg, #3ABEF9 0%, #3572EF 100%); /* Orange gradient */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    height: 70px;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.predi-card h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.predi-card p {
+    margin: 10px 0 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#official_toll {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #ff7e5f 0%, #feb47b 100%); /* Match card gradient */
+    outline: none;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+#official_toll:hover {
+    opacity: 1;
+}
+
+#official_toll::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #ff7e5f;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#official_toll::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(255, 126, 95, 0.6);
+}
+
+#official_toll::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #ff7e5f;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#official_toll::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(255, 126, 95, 0.6);
+}
+
+#toll_value {
+    font-weight: bold;
+    color: #555;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+button#predict_button {
+    background-color: #ff7e5f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button#predict_button:hover {
+    background-color: #feb47b;
+}

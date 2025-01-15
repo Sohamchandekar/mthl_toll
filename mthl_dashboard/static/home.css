@@ -1,0 +1,77 @@
+/* General reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    overflow: hidden; /* Prevent scrollbars if the video overflows */
+}
+
+/* Background video styling */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video fills the screen without distortion */
+    z-index: -1; /* Keeps the video behind other content */
+}
+
+/* Header styling */
+header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(245, 245, 245, 0.5); /* Light off-white background with slight transparency */
+    color: black;
+    text-shadow: none; /* Removed text shadow for a cleaner look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow for better separation from background */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* Navigation styling */
+nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black; /* Default color for links */
+    font-size: 1.2rem;
+    margin-left: 20px;
+    padding: 5px 10px;
+    border: none; /* Removed border */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for navigation buttons */
+nav a:hover {
+    background-color: black; /* Black background on hover */
+    color: white; /* White text on hover */
+    border-radius: 5px; /* Smooth rounded corners on hover */
+}
+
+
+
+/* Footer styling */
+footer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
